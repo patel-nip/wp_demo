@@ -74,7 +74,7 @@ export default function App() {
     <div className="smooth-scroll" ref={containerRef}>
       {/* Navbar */}
       <nav className="navbar">
-        <div className="logo">Visionary</div>
+        <img src="/assets/logo.svg" alt="Visionary Logo" className="logo" />
         <div className="nav-links">
           <a href="#hero">Overview</a>
           <a href="#desc">Features</a>

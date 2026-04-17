@@ -36,13 +36,15 @@ body {
 }
 
 .logo {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: -0.5px;
-  background: linear-gradient(90deg, #fff, #888);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  height: 36px;
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }
 
 .nav-links a {
