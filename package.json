@@ -1,0 +1,25 @@
+{
+  "name": "html_scrol",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "extract": "node extract.js"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "vite": "^8.0.8"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@studio-freight/lenis": "^1.0.42",
+    "@vitejs/plugin-react": "^6.0.1",
+    "gsap": "^3.12.5",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}

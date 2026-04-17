@@ -1,0 +1,257 @@
+:root {
+  --bg-color: #030305;
+  --text-main: #fbfbfd;
+  --text-muted: #86868b;
+  --accent: #2997ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(3, 3, 5, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #fff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-muted);
+}
+
+/* Scroll Sections */
+.scroll-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* Will be pinned by GSAP */
+}
+
+.canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Typography Overlays */
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Let clicks pass through */
+}
+
+/* Hero Text */
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 6rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* Desc Text */
+.desc-content {
+  align-items: flex-start;
+  padding: 0 10vw;
+}
+
+.desc-box {
+  opacity: 0; /* Hidden initially, managed by GSAP */
+  transform: translateY(30px);
+  position: absolute;
+  max-width: 400px;
+}
+
+#desc-1 { top: 30%; right: 10vw; }
+#desc-2 { top: 60%; left: 10vw; }
+
+.desc-box h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.desc-box p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Product Section */
+.product-section {
+  padding: 120px 20px;
+  background: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+}
+
+.product-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.product-header {
+  text-align: center;
+}
+
+.product-header h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.product-header p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+/* The Hover Card */
+.product-card {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #111114;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 40px 80px rgba(41, 151, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.product-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.product-poster,
+.product-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.product-video {
+  opacity: 0; /* Hidden initially */
+}
+
+/* Hover magic */
+.product-card:hover .product-video {
+  opacity: 1; /* Show video fading over image */
+}
+.product-card:hover .product-poster {
+  opacity: 0.5; /* Slightly dim poster underneath */
+}
+
+.product-info {
+  padding: 40px;
+  text-align: center;
+}
+
+.product-info h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  color: var(--text-muted);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px;
+  background: #000;
+  color: #444;
+  font-size: 0.8rem;
+}
